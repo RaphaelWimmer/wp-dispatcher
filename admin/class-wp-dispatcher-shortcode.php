@@ -72,7 +72,8 @@ class Wp_Dispatcher_Shortcode {
 			}
 
 			// 2. prepare inserts
-			$hash = hash('sha256', current_time( 'mysql' ).$upload->filename);
+			$hash = hash('adler32', current_time( 'mysql' ).$upload->filename);
+		
 
 			$options = get_option( 'wp_dispatcher_options' );
 			$expiration_hours = $options['expires_after'];
